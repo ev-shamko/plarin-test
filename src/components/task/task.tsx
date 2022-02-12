@@ -2,22 +2,18 @@ import React, { useEffect, useState } from 'react';
 import './task.scss';
 import defaultStore from '../../stores/defaultStore';
 import { getPage } from '../../utils/api';
-import {
-  Pagination,
-  TextField,
-  Stack,
-  Link
-} from "@mui/material";
+import { observer } from 'mobx-react-lite';
+import { Pagination } from "@mui/material";
 
-export const Task = () => {
+export const Task = observer(() => {
   const { link } = defaultStore;
   const [pageNumber, setPageNumber] = useState(1);
   const [pageQty] = useState(37); // здесь захардкодено максимальное количество страниц (444 дома в бд, на странице отображается по 12 домов)
-  const [houses, setHouses] = useState<any>([]);
+  // const [houses, setHouses] = useState<any>([]);
 
   useEffect(() => {
     getPage(pageNumber)
-      .then((res) => setHouses(res.data))
+      .then((res) => defaultStore.setHousesData(res.data))
       .catch(err => console.log(err))
   }, [pageNumber]);
 
@@ -27,7 +23,7 @@ export const Task = () => {
         Задание
       </a>
       <ul>
-        {houses.length > 0 && houses.map((house: any, index: number) => (<li key={index}>{house.name}</li>))}
+        {defaultStore.housesData.length > 0 && defaultStore.housesData.map((house: any, index: number) => (<li key={index}>{house.name}</li>))}
       </ul>
 
       <Pagination
@@ -37,4 +33,4 @@ export const Task = () => {
       />
     </div>
   );
-};
+});

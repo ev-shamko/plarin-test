@@ -12,24 +12,14 @@ import {
 export const Task = () => {
   const { link } = defaultStore;
   const [pageNumber, setPageNumber] = useState(1);
-  const [pageQty] = useState(37); // Захардкодено максимальное количество страниц (444 дома в базе, на странице по 12 домов)
+  const [pageQty] = useState(37); // здесь захардкодено максимальное количество страниц (444 дома в бд, на странице отображается по 12 домов)
   const [houses, setHouses] = useState<any>([]);
 
-  // запрос за текущей страницей домов
   useEffect(() => {
     getPage(pageNumber)
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        setHouses(res);
-      })
+      .then((res) => setHouses(res.data))
       .catch(err => console.log(err))
-
   }, [pageNumber]);
-
-  const getNextPage = () => {
-    setPageNumber(pageNumber + 1);
-  }
 
   return (
     <div className="task">
@@ -39,7 +29,6 @@ export const Task = () => {
       <ul>
         {houses.length > 0 && houses.map((house: any, index: number) => (<li key={index}>{house.name}</li>))}
       </ul>
-      <span onClick={getNextPage} className="nextPage">Next page</span>
 
       <Pagination
         count={pageQty}

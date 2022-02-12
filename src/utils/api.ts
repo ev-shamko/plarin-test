@@ -1,3 +1,4 @@
+import axios from "axios";
 export const BASE_URL = 'https://anapioficeandfire.com/api';
 
 // по условию задания на странице находится по 12 домов
@@ -6,6 +7,5 @@ export const getPageUrl = (pageNumber: number) => {
 }
 
 export const getPage = (pageNumber: number) => {
-  // return console.log(getPageUrl(pageNumber))
-  return fetch(getPageUrl(pageNumber));
+  return axios.get(getPageUrl(pageNumber))
 }

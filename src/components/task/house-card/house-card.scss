@@ -1,0 +1,42 @@
+.houseCard {
+  display: block;
+  position: relative;
+  padding: 10px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+
+  > h2 {
+    margin: 30px 0 10px;
+  }
+}
+
+.houseRegion {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-right: 45px; // чтобы точно не наехал на кнопку добавления в избранное
+  font-weight: 500;
+}
+
+.houseWords {
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+}
+
+.starButton {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  margin-left: auto;
+
+  &:hover {
+    box-shadow: 0 4px 12px #dddcdc;
+  }
+}

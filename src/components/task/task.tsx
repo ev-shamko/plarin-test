@@ -4,6 +4,8 @@ import defaultStore from '../../stores/defaultStore';
 import { getPage } from '../../utils/api';
 import { observer } from 'mobx-react-lite';
 import { Pagination } from "@mui/material";
+import { HouseCard } from './house-card/house-card';
+import { THouse } from '../../utils/types';
 
 export const Task = observer(() => {
   const { link } = defaultStore;
@@ -23,7 +25,7 @@ export const Task = observer(() => {
         Задание
       </a>
       <ul>
-        {defaultStore.housesData.length > 0 && defaultStore.housesData.map((house: any, index: number) => (<li key={index}>{house.name}</li>))}
+        {defaultStore.housesData.length > 0 && defaultStore.housesData.map((house: THouse, index: number) => (<HouseCard houseData={house} key={index} />))}
       </ul>
 
       <Pagination

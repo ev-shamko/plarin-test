@@ -1,12 +1,71 @@
 .task {
   margin-top: 1rem;
+  margin-bottom: 20px;
   border: 2px solid #9a8e8e;
   border-radius: 5px;
-  padding: 10px 5px;
+  padding: 10px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   box-sizing: border-box;
   min-width: 320px; // для упрощения задачи допустим, что нам не нужен адаптив на ширину экрана менее 320 пикселей
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.menu {
+  margin: 0 0 15px;
+  width: 100%;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+
+  > ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+
+    > li {
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 20px;
+      margin: 10px 15px;
+    }
+
+    .activeMenuItem {
+      color: black;
+      text-decoration: underline;
+    }
+
+    .inactiveMenuItem {
+      color: gray;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .task {
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .task > h1 {
+    font-size: 28px;
+  }
+
+  .menu > ul > li {
+    font-size: 16px;
+
+  }
 }

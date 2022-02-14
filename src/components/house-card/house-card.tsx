@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import StarBorderPurple500SharpIcon from '@mui/icons-material/StarBorderPurple500Sharp';
 import StarPurple500SharpIcon from '@mui/icons-material/StarPurple500Sharp';
-import { THouse } from '../../../utils/types';
+import { THouse } from '../../utils/types';
 import SvgIcon from '@mui/material/SvgIcon';
 import './house-card.scss';
-import { setNewFavouriteHouse, removeHouseFromFavs, getFavouriteHouses, isHouseFavourite } from '../../../utils/localStorage';
+import { setNewFavouriteHouse, removeHouseFromFavs, getFavouriteHouses, isHouseFavourite } from '../../utils/localStorage';
 import { toJS } from 'mobx';
 
 type THouseCardProps = {
@@ -18,7 +18,7 @@ export const HouseCard = ({ houseData }: THouseCardProps) => {
     setIsFavorite(isHouseFavourite(houseData, getFavouriteHouses()))
   }
 
-  // проверит, находится ли карточка в избранном
+  // проверит, находится ли карточка в избранном.
   useEffect(() => {
     checkIsInFavourites()
   }, []);

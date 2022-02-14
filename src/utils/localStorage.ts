@@ -3,7 +3,7 @@ import { THouse } from './types';
 // проверяет, есть ли данный дом в массиве избранных домов. Возвращает true/false
 export const isHouseFavourite = (house: THouse, favourites: Array<THouse>): boolean => {
   const res = favourites.find((favHouse) => favHouse.name === house.name);
-  console.log('Checked if this house is in Favs. Res: ', !!res)
+  // console.log('Checked if this house is in Favs. Res: ', !!res)
   return !!res;
 }
 

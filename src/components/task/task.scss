@@ -9,7 +9,9 @@
   align-items: center;
 
   box-sizing: border-box;
+  width: 100%;
   min-width: 320px; // для упрощения задачи допустим, что нам не нужен адаптив на ширину экрана менее 320 пикселей
+  min-height: 88vh;
 
   h1 {
     text-align: center;

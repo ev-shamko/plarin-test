@@ -43,6 +43,10 @@ export const Task = observer(() => {
           count={pageQty}
           page={pageNumber}
           onChange={(_, num) => setPageNumber(num)}
+          siblingCount={0} 
+          boundaryCount={1}
+          // showFirstButton 
+          // showLastButton
           sx={{ mb: 4, }}
         />
 
@@ -50,7 +54,7 @@ export const Task = observer(() => {
         {defaultStore.housesData.length > 0 && defaultStore.housesData.map((house: THouse, index: number) => (<HouseCard houseData={house} key={index} />))}
       </ul> */}
 
-        <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 2, sm: 8, md: 12 }} sx={{ mb: 8, mt: 8 }}>
+        <Grid container alignItems="stretch" spacing={{ xs: 2, md: 2 }} columns={{ xs: 2, sm: 8, md: 12 }} sx={{ mb: 8, mt: 8 }}>
           {defaultStore.housesData.length > 0 && defaultStore.housesData.map((house: THouse, index: number) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
               <HouseCard houseData={house} key={index} />
@@ -62,7 +66,11 @@ export const Task = observer(() => {
           count={pageQty}
           page={pageNumber}
           onChange={(_, num) => setPageNumber(num)}
-          sx={{ mb: 2, }}
+          siblingCount={0} 
+          boundaryCount={1}
+          // showFirstButton 
+          // showLastButton
+          sx={{ mb: 4, }}
         />
 
       </div>

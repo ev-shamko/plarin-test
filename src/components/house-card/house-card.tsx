@@ -4,8 +4,8 @@ import StarPurple500SharpIcon from '@mui/icons-material/StarPurple500Sharp';
 import { THouse } from '../../utils/types';
 import SvgIcon from '@mui/material/SvgIcon';
 import './house-card.scss';
-import { setNewFavouriteHouse, getFavouriteHouses, isHouseFavourite } from '../../utils/localStorage';
-import { toJS } from 'mobx';
+import { getFavouriteHousesFromLS, isHouseFavourite } from '../../utils/localStorage';
+import defaultStore from '../../stores/defaultStore';
 
 type THouseCardProps = {
   houseData: THouse
@@ -15,10 +15,10 @@ export const HouseCard = ({ houseData }: THouseCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const checkIsInFavourites = () => {
-    setIsFavorite(isHouseFavourite(houseData, getFavouriteHouses()))
+    setIsFavorite(isHouseFavourite(houseData, getFavouriteHousesFromLS()))
   }
 
-  // проверит, находится ли карточка в избранном.
+  // проверит, находится ли карточка в избранном, после первичной загрузки карточки
   useEffect(() => {
     checkIsInFavourites()
   }, []);
@@ -33,8 +33,8 @@ export const HouseCard = ({ houseData }: THouseCardProps) => {
   }
 
   const handleClick = () => {
-    setIsFavorite(!isFavorite);
-    setNewFavouriteHouse(toJS(houseData)) // вот эти Proxy - это, конечно, было внезапно
+    defaultStore.toggleFaveHouse(houseData);
+    checkIsInFavourites()
   }
 
   return (

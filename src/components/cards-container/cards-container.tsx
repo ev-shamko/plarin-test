@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Grid } from "@mui/material";
 import { THouse } from '../../utils/types';
 import { HouseCard } from '../house-card/house-card';
@@ -6,7 +6,7 @@ import { HouseCard } from '../house-card/house-card';
 
 type TCardsContainerProps = {
   housesList: Array<THouse>,
-  messageWhyEmty: string,
+  messageWhyEmty: string | JSX.Element,
 }
 
 export const CardsContainer = ({ housesList, messageWhyEmty }: TCardsContainerProps) => {

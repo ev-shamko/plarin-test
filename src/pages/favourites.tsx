@@ -1,9 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { observer } from 'mobx-react-lite';
 import defaultStore from '../stores/defaultStore';
-import { PagePagination } from '../components/pagination/pagination';
-import { HouseCard } from '../components/house-card/house-card';
-import { THouse } from '../utils/types';
 import { CardsContainer } from '../components/cards-container/cards-container';
 
 export const FavouritesPage = observer(() => {
@@ -12,17 +9,15 @@ export const FavouritesPage = observer(() => {
     faveHousesList: housesList,
   } = defaultStore;
 
-  useEffect(() => {
-    defaultStore.parseFaveHousesInStore();
-  }, []);
+
 
   const messageWhyEmty = useMemo(() => {
-    return 'Seems like you haven`t favourite any Houses. You may come back to the List of all Houses and press star buttons to fave houses';
+    return (<p style={{margin: 'auto'}}>Seems like you haven`t add to favourites any Houses. You may come back to the List of all Houses and press star buttons to fave houses.</p>);
   }, []);
 
   return (
     <>
-      Your favourite Houses
+      {/* В задании не требуется делать пагинацию на этой странице, так что я с большим удовольствием не буду её здесь реализовывать. Не люблю, когда отображается мало элементов и нужно листать страницы */}
       <CardsContainer housesList={housesList} messageWhyEmty={messageWhyEmty}></CardsContainer>
     </>
   )

@@ -7,8 +7,14 @@ export const isHouseFavourite = (house: THouse, favourites: Array<THouse>): bool
   return !!res;
 }
 
+
+// записывает в localStorage новый массив с объектами домов
+export const setFavouriteHousesInLS = (newListOfHouses: Array<THouse>) => {
+  localStorage.setItem('favouriteHouses', JSON.stringify(newListOfHouses));
+}
+
 // достаёт из localStorage строку и парсит её в массив объектов
-export const getFavouriteHouses = () => {
+export const getFavouriteHousesFromLS = () => {
   const favouritesFromLocalStorage: string | null = localStorage.getItem('favouriteHouses');
   let parsedFavourites: Array<THouse>;
 
@@ -20,39 +26,4 @@ export const getFavouriteHouses = () => {
   }
 
   return parsedFavourites;
-}
-
-
-export const setFavouriteHouses = (newListOfHouses: Array<THouse>) => {
-  localStorage.setItem('favouriteHouses', JSON.stringify(newListOfHouses));
-}
-
-// **********************************************************
-
-export const removeHouseFromFavs = (excludedHouse: THouse) => {
-  const parsedFavourites: Array<THouse> = getFavouriteHouses();
-
-  // проверяем, есть ли этот дом уже в избранном
-  if (isHouseFavourite(excludedHouse, parsedFavourites)) {
-    const newFavs = parsedFavourites.filter((house) => house.name !== excludedHouse.name);
-    console.log('newFavs', newFavs)
-    return setFavouriteHouses(newFavs);
-  }
-
-  return console.log('This house wasn`t in favourites, so can`t remove it from favourites')
-}
-
-export const setNewFavouriteHouse = (houseData: THouse) => {
-  const parsedFavourites: Array<THouse> = getFavouriteHouses();
-
-  // проверяем, есть ли этот дом уже в избранном
-  if (isHouseFavourite(houseData, parsedFavourites)) {
-    return console.log('This house is alredy in favourites')
-  }
-
-  // добавляем в массив новый объект с информацией о доме
-  parsedFavourites.push(houseData);
-  setFavouriteHouses(parsedFavourites);
-  return console.log('New House was added in Favourites: ', parsedFavourites);
-
 }

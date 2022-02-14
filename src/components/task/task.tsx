@@ -1,11 +1,17 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import './task.scss';
 import { MainPage, FavouritesPage } from '../../pages';
+import defaultStore from '../../stores/defaultStore';
 
 type TCurrentSection = 'ALL_HOUSES' | 'FAVOURITE_HOUSES';
 
 export const Task = () => {
   const [currentSection, setCurrentSection] = useState<TCurrentSection>('ALL_HOUSES');
+
+  // обновим данные об избранных домах в стейте при загрузке компонента
+  useEffect(() => {
+    defaultStore.initialParseFaveHousesInStore();
+  }, []);
 
   const menu = useMemo(() => {
     return (

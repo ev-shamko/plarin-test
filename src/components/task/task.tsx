@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import './task.scss';
-import { AllHousesList } from '../allHousesList/all-houses-list';
+import { MainPage, FavouritesPage } from '../../pages';
+
 type TCurrentSection = 'ALL_HOUSES' | 'FAVOURITE_HOUSES';
 
 export const Task = () => {
@@ -21,13 +22,13 @@ export const Task = () => {
   const currentAppSection = useMemo(() => {
     switch (currentSection) {
       case 'ALL_HOUSES': {
-        return <AllHousesList />;
+        return <MainPage />;
       }
       case 'FAVOURITE_HOUSES': {
-        return null;
+        return <FavouritesPage />;
       }
       default: {
-        return <AllHousesList />
+        return <MainPage />
       }
     }
   }, [currentSection]);

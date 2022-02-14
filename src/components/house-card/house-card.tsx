@@ -47,8 +47,7 @@ export const HouseCard = ({ houseData }: THouseCardProps) => {
       <span className='houseRegion'>{houseData.region}</span>
       <h2>{houseData.name}</h2>
       {getTitle()}
-
-
+      
     </li>
   )
 }

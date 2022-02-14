@@ -7,7 +7,6 @@ export const isHouseFavourite = (house: THouse, favourites: Array<THouse>): bool
   return !!res;
 }
 
-
 // записывает в localStorage новый массив с объектами домов
 export const setFavouriteHousesInLS = (newListOfHouses: Array<THouse>) => {
   localStorage.setItem('favouriteHouses', JSON.stringify(newListOfHouses));

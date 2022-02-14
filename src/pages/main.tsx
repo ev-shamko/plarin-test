@@ -1,10 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { observer } from 'mobx-react-lite';
 import defaultStore from '../stores/defaultStore';
-import { Grid } from "@mui/material";
 import { PagePagination } from '../components/pagination/pagination';
-import { HouseCard } from '../components/house-card/house-card';
-import { THouse } from '../utils/types';
 import { getPage } from '../utils/api';
 import { CardsContainer } from '../components/cards-container/cards-container';
 
